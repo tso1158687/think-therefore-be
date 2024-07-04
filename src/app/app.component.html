@@ -2,10 +2,18 @@
 <div class="flex">
   <input type="text" [(ngModel)]="currentQuestion" />
   {{ currentQuestion }}
-  <button (click)="askQuestion()">送出</button>
+  <p-button (click)="askQuestion()" label="Submit" />
   <div>
     解答:
     {{ answer }}
   </div>
 </div>
-<img src="logo2.webp" alt="" />
+
+<textarea
+  rows="1"
+  cols="30"
+  pInputTextarea
+  [autoResize]="true"
+  [(ngModel)]="value"
+></textarea>
+<!-- <img src="logo2.webp" alt="" /> -->

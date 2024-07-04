@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AskService } from './service/ask.service';
-import { FormsModule }   from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule],
+  imports: [RouterOutlet, FormsModule, InputTextareaModule,ButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -14,12 +15,13 @@ export class AppComponent implements OnInit {
   private askService = inject(AskService);
   title = 'think-therefore-be';
   currentQuestion = '';
-  answer=''
+  answer = '';
+  value='taipei'
   ngOnInit(): void {}
 
-  askQuestion():void {
+  askQuestion(): void {
     this.askService.askGemini(this.currentQuestion).subscribe((response) => {
-      console.log(response)
+      console.log(response);
       this.answer = response;
     });
   }
