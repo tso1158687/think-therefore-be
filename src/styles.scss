@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
-
+@import "primeicons/primeicons.css";
 * {
   font-family: 'Noto Sans TC', sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--gray-700);
 }

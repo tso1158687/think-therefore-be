@@ -1,11 +1,13 @@
-<h1>有思固有在</h1>
+<app-header></app-header>
 <div class="flex">
   <input type="text" [(ngModel)]="currentQuestion" />
   {{ currentQuestion }}
-  <button (click)="askQuestion()">送出</button>
+  <p-button (click)="askQuestion()" label="Submit" />
   <div>
     解答:
     {{ answer }}
   </div>
 </div>
-<img src="logo2.webp" alt="" />
+
+
+<router-outlet></router-outlet>
