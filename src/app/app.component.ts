@@ -4,10 +4,17 @@ import { AskService } from './service/ask.service';
 import { FormsModule } from '@angular/forms';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
+import { HeaderComponent } from './component/header/header.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, InputTextareaModule,ButtonModule],
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    InputTextareaModule,
+    ButtonModule,
+    HeaderComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -16,7 +23,7 @@ export class AppComponent implements OnInit {
   title = 'think-therefore-be';
   currentQuestion = '';
   answer = '';
-  value='taipei'
+  value = 'taipei';
   ngOnInit(): void {}
 
   askQuestion(): void {
