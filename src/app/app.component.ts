@@ -11,9 +11,10 @@ import { HeaderComponent } from './component/header/header.component';
   imports: [
     RouterOutlet,
     FormsModule,
-    InputTextareaModule,
+
     ButtonModule,
     HeaderComponent,
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
