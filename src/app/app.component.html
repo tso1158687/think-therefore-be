@@ -1,13 +1,2 @@
 <app-header></app-header>
-<div class="flex">
-  <input type="text" [(ngModel)]="currentQuestion" />
-  {{ currentQuestion }}
-  <p-button (click)="askQuestion()" label="Submit" />
-  <div>
-    解答:
-    {{ answer }}
-  </div>
-</div>
-
-
 <router-outlet></router-outlet>

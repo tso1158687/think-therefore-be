@@ -1,7 +1,23 @@
-<textarea
-  rows="1"
-  cols="30"
-  pInputTextarea
-  [autoResize]="true"
-  [(ngModel)]="value"
-></textarea>
+<div class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50">
+  <div class="text-5xl font-bold">自己想過的事情是騙不了你的</div>
+  <div class="flex">
+    <textarea
+      rows="1"
+      cols="30"
+      pInputTextarea
+      [autoResize]="true"
+      [(ngModel)]="currentQuestion"
+    ></textarea>
+    <p-button (click)="askQuestion()" label="Submit" />
+  </div>
+  <div class="flex">
+    @if (isLoaded) {
+    <p-progressSpinner ariaLabel="loading" />
+    }@else {
+    <div>
+      解答:
+      {{ answer }}
+    </div>
+    }
+  </div>
+</div>
