@@ -1,5 +1,7 @@
-<div class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50">
-  <div class="text-5xl font-bold">自己想過的事情是騙不了你的</div>
+<div
+  class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50 w-full h-full"
+>
+  <div class="text-5xl font-bold mt-8 mb-8">自己想過的事情是騙不了你的</div>
   <div class="flex">
     <textarea
       rows="1"
@@ -8,6 +10,8 @@
       [autoResize]="true"
       [(ngModel)]="currentQuestion"
     ></textarea>
+  </div>
+  <div class="flex">
     <p-button (click)="askQuestion()" label="Submit" />
   </div>
   <div class="flex">
