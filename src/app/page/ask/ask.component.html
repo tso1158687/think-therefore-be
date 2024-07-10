@@ -4,32 +4,40 @@
 >
   <div class="text-5xl font-bold mt-8 mb-8">自己想過的事情是騙不了你的</div>
   <div class="flex">
-    <textarea
-      rows="1"
-      cols="30"
-      pInputTextarea
-      [autoResize]="true"
-      formControlName="question"
-    ></textarea>
-  </div>
-  <div class="card flex justify-content-center">
-    <p-selectButton
-        [options]="preconditionOptions"
-        formControlName="precondition"
-        optionLabel="name"
-        optionValue="value" />
-</div>
-  <div class="flex">
-    <p-button (click)="askQuestion()" label="Submit" />
-  </div>
-  <div class="flex">
     @if (isLoaded) {
     <p-progressSpinner ariaLabel="loading" />
     }@else {
     <div>
-      解答:
-      {{ answer }}
+      <markdown [data]="answer"></markdown>
     </div>
     }
   </div>
+  <div class="flex">
+    <p-inputGroup styleClass="align-items-end">
+      <textarea
+        rows="1"
+        pInputTextarea
+        [autoResize]="false"
+        formControlName="question"
+        [autoResize]="true"
+      ></textarea>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-search"
+        class="p-button-warning"
+        (click)="askQuestion()"
+      ></button>
+    </p-inputGroup>
+  </div>
+  <div class="card flex justify-content-center">
+    <p-selectButton
+      [options]="preconditionOptions"
+      formControlName="precondition"
+      optionLabel="name"
+      optionValue="value"
+
+    />
+  </div>
+
 </div>

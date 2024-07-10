@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -12,6 +11,11 @@ import { AskService } from '../../service/ask.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { finalize } from 'rxjs';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { MarkdownModule } from 'ngx-markdown';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+
+
 @Component({
   selector: 'app-ask',
   standalone: true,
@@ -21,6 +25,9 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     ProgressSpinnerModule,
     SelectButtonModule,
     ReactiveFormsModule,
+    MarkdownModule,
+    InputGroupAddonModule,
+    InputGroupModule
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
@@ -40,7 +47,7 @@ export class AskComponent {
   preconditionOptions: any[] = [
     { name: '整理脈絡', value: 'a' },
     { name: '批判', value: 'b' },
-    { name: '綜合', value: 'c' },
+    { name: '綜合(不要點)', value: 'c' },
   ];
 
   askQuestion(): void {
