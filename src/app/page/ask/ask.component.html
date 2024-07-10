@@ -1,5 +1,6 @@
 <div
   class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50 w-full h-full"
+  [formGroup]="askForm"
 >
   <div class="text-5xl font-bold mt-8 mb-8">自己想過的事情是騙不了你的</div>
   <div class="flex">
@@ -8,9 +9,16 @@
       cols="30"
       pInputTextarea
       [autoResize]="true"
-      [(ngModel)]="currentQuestion"
+      formControlName="question"
     ></textarea>
   </div>
+  <div class="card flex justify-content-center">
+    <p-selectButton
+        [options]="preconditionOptions"
+        formControlName="precondition"
+        optionLabel="name"
+        optionValue="value" />
+</div>
   <div class="flex">
     <p-button (click)="askQuestion()" label="Submit" />
   </div>
