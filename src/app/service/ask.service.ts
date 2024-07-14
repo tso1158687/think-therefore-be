@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AskService {
   private http = inject(HttpClient);
-  // private url='https://think-therefore-be-api.azurewebsites.net/gemini';
-  private url = 'http://localhost:3000/gemini';
+  private url='https://think-therefore-be-api.azurewebsites.net/gemini';
+  // private url = 'http://localhost:3000/gemini';
   constructor() {}
 
   askGemini(prompt: string): Observable<string> {
