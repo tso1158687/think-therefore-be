@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Conversation } from '../type/conversation.type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +13,11 @@ export class ConversationService {
 
   constructor() {}
 
-  getConversationList() {
-    return this.http.get(this.url);
+  getConversationList(): Observable<Conversation[]> {
+    return this.http.get<Conversation[]>(this.url);
   }
 
-  getConversation(id: string) {
-    return this.http.get(`${this.url}/${id}`);
+  getConversation(id: string): Observable<Conversation> {
+    return this.http.get<Conversation>(`${this.url}/${id}`);
   }
 }
