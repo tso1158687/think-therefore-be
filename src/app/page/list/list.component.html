@@ -1,6 +1,7 @@
 @for (conversation of (conversationList$|async); track $index) {
 
 <p-card header="問題紀錄" styleClass="mt-4 max800">
+  <p-button (click)="gotoQuestion(conversation._id)">前往問題</p-button>
   @for (message of conversation.messages; track $index) {
   <markdown [data]="message.parts[0].text"></markdown>
 

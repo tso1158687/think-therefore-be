@@ -10,7 +10,7 @@ export type Message = {
 };
 
 export type Conversation = {
-  _id?: string;
+  _id: string;
   messages: Message[];
   createdAt?: Date;
   updatedAt?: Date;

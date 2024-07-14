@@ -16,6 +16,8 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ConversationService } from '../../service/conversation.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Conversation } from '../../type/conversation.type';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-ask',
@@ -30,6 +32,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
     InputGroupAddonModule,
     InputGroupModule,
     RouterModule,
+    CardModule
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
@@ -49,6 +52,8 @@ export class AskComponent implements OnInit {
     precondition: new FormControl('a', [Validators.required]),
   });
 
+  conversation!: Conversation ;
+
   conversationList: any[] = [];
 
   preconditionOptions: any[] = [
@@ -58,8 +63,10 @@ export class AskComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.getConversationList();
-    this.getConversation(this.activatedRoute.snapshot.queryParams['c'])
+    // this.getConversationList();
+    if (this.activatedRoute.snapshot.queryParams['c']) {
+      this.getConversation(this.activatedRoute.snapshot.queryParams['c']);
+    }
   }
 
   askQuestion(): void {
@@ -85,6 +92,7 @@ export class AskComponent implements OnInit {
 
   getConversation(id: string) {
     this.conversationService.getConversation(id).subscribe((conversation) => {
+      this.conversation = conversation;
       console.log(conversation);
     });
   }

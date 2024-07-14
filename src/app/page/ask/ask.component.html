@@ -4,7 +4,16 @@
 >
   <div class="text-5xl font-bold mt-8 mb-8">自己想過的事情是騙不了你的</div>
   <div class="flex">
-    @if (isLoaded) {
+    @if(conversation){
+
+    <div class="card flex justify-content-center">
+      <p-card header="問題紀錄（希望可以連度對話）" styleClass="mt-4 max800">
+        @for (message of conversation.messages; track $index) {
+        <markdown [data]="message.parts[0].text"></markdown>
+        }
+      </p-card>
+    </div>
+    } @if (isLoaded) {
     <p-progressSpinner ariaLabel="loading" />
     }@else {
     <div>
@@ -37,8 +46,5 @@
       optionLabel="name"
       optionValue="value"
     />
-  </div>
-  <div class="card flex justify-content-center">
-    <!-- <markdown [data]="conversationList[1]?.messages[1]?.parts[0]?.text"></markdown> -->
   </div>
 </div>

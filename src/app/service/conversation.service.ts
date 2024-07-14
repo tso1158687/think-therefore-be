@@ -8,7 +8,7 @@ import { Conversation } from '../type/conversation.type';
 })
 export class ConversationService {
   private http = inject(HttpClient);
-  private url='https://think-therefore-be-api.azurewebsites.net/gemini';
+  private url='https://think-therefore-be-api.azurewebsites.net/conversations';
   // private url = 'http://localhost:3000/conversations';
 
   constructor() {}
