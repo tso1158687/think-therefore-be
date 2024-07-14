@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,7 +14,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { MarkdownModule } from 'ngx-markdown';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-
+import { ConversationService } from '../../service/conversation.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-ask',
@@ -27,13 +28,17 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
     ReactiveFormsModule,
     MarkdownModule,
     InputGroupAddonModule,
-    InputGroupModule
+    InputGroupModule,
+    RouterModule,
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
-export class AskComponent {
+export class AskComponent implements OnInit {
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
   private askService = inject(AskService);
+  private conversationService = inject(ConversationService);
   isLoaded = false;
   answer = '';
   askForm = new FormGroup({
@@ -44,21 +49,43 @@ export class AskComponent {
     precondition: new FormControl('a', [Validators.required]),
   });
 
+  conversationList: any[] = [];
+
   preconditionOptions: any[] = [
     { name: '整理脈絡', value: 'a' },
     { name: '批判', value: 'b' },
     { name: '綜合(不要點)', value: 'c' },
   ];
 
+  ngOnInit(): void {
+    this.getConversationList();
+    this.getConversation(this.activatedRoute.snapshot.queryParams['c'])
+  }
+
   askQuestion(): void {
     this.isLoaded = true;
-    const {question,precondition}=this.askForm.value;
+    const { question, precondition } = this.askForm.value;
     this.askService
-      .askGemini2((question as string), (precondition as string))
+      .askGemini2(question as string, precondition as string)
       .pipe(finalize(() => (this.isLoaded = false)))
       .subscribe((response) => {
         console.log(response);
         this.answer = response;
       });
+  }
+
+  getConversationList() {
+    this.conversationService
+      .getConversationList()
+      .subscribe((conversationList) => {
+        console.log(conversationList);
+        this.conversationList = conversationList as any[];
+      });
+  }
+
+  getConversation(id: string) {
+    this.conversationService.getConversation(id).subscribe((conversation) => {
+      console.log(conversation);
+    });
   }
 }
