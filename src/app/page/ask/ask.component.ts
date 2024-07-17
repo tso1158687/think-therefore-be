@@ -18,6 +18,7 @@ import { ConversationService } from '../../service/conversation.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Conversation } from '../../type/conversation.type';
 import { CardModule } from 'primeng/card';
+import { QuestionInputComponent } from '../../component/question-input/question-input.component';
 
 @Component({
   selector: 'app-ask',
@@ -32,13 +33,14 @@ import { CardModule } from 'primeng/card';
     InputGroupAddonModule,
     InputGroupModule,
     RouterModule,
-    CardModule
+    CardModule,
+    QuestionInputComponent
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
 export class AskComponent implements OnInit {
-  private router = inject(Router);
+
   private activatedRoute = inject(ActivatedRoute);
   private askService = inject(AskService);
   private conversationService = inject(ConversationService);
@@ -63,15 +65,14 @@ export class AskComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    // this.getConversationList();
     if (this.activatedRoute.snapshot.queryParams['c']) {
       this.getConversation(this.activatedRoute.snapshot.queryParams['c']);
     }
   }
 
-  askQuestion(): void {
+  askQuestion(question:string): void {
     this.isLoaded = true;
-    const { question, precondition } = this.askForm.value;
+    const { precondition } = this.askForm.value;
     this.askService
       .askGemini2(question as string, precondition as string)
       .pipe(finalize(() => (this.isLoaded = false)))

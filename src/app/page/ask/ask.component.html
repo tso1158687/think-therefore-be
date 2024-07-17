@@ -21,24 +21,6 @@
     </div>
     }
   </div>
-  <div class="flex">
-    <p-inputGroup styleClass="align-items-end">
-      <textarea
-        rows="1"
-        pInputTextarea
-        [autoResize]="false"
-        formControlName="question"
-        [autoResize]="true"
-      ></textarea>
-      <button
-        type="button"
-        pButton
-        icon="pi pi-search"
-        class="p-button-warning"
-        (click)="askQuestion()"
-      ></button>
-    </p-inputGroup>
-  </div>
   <div class="card flex justify-content-center">
     <p-selectButton
       [options]="preconditionOptions"
@@ -46,5 +28,8 @@
       optionLabel="name"
       optionValue="value"
     />
+  </div>
+  <div class="w-full">
+    <app-question-input (askQuestionEvent)="askQuestion($event)"></app-question-input>
   </div>
 </div>

@@ -22,7 +22,7 @@ export class AskService {
       prompt: question,
       precondition,
     };
-    console.log(body)
+    // console.log(body)
     return this.http.post<string>(this.url, body, {
       responseType: 'text' as any,
     });

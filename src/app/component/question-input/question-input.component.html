@@ -1,1 +1,53 @@
-<p>question-input works!</p>
+<div class="flex h-full flex-column focus-visible:outline-0 sss">
+  <div
+    class="w-full md:border-transparent"
+  >
+    <div class="px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
+      <div
+        class="mx-auto flex flex-1 gap-3 text-base md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem]"
+      >
+        <form class="w-full">
+          <div class="relative flex h-full max-w-full flex-1 flex-column">
+            <div class="absolute bottom-full left-0 right-0 z-20">
+              <div class="relative h-full w-full">
+                <div class="flex flex-column gap-3.5 pb-3.5 pt-2"></div>
+              </div>
+            </div>
+            <div class="flex w-full align-items-center">
+              <div
+                class="flex w-full flex-column gap-2 border-round-2xl p-2 bg-gray-700"
+              >
+                <div class="flex align-items-end gap-1.5 md:gap-2">
+                  <div class="flex min-w-0 flex-1 flex-column">
+
+
+                    <textarea
+                      rows="1"
+                      class="m-0 resize-none border-none bg-transparent px-0  max-h-[25dvh] max-h-52
+                      pl-2"
+                      style="height: 400px"
+                      pInputTextarea
+                      [(ngModel)]="question"
+                      [ngModelOptions]="{standalone: true}"
+                    >
+                    </textarea>
+                  </div>
+                  <button
+                    pButton
+                    pRipple
+                    label="送出"
+                    (click)="askQuestion()"
+                    class="p-button-primary p-button-outlined p-button-rounded p-button-text"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="relative px-2 py-2 text-center text-xs text-color-secondary">
+      <span>想過才是自己的，任何答案都請再想一遍，有道理嗎?</span>
+    </div>
+  </div>
+</div>

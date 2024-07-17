@@ -6,10 +6,11 @@ import { AsyncPipe } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { MessageComponent } from '../../component/message/message.component';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardModule, AsyncPipe, MarkdownModule, RouterModule, ButtonModule],
+  imports: [CardModule, AsyncPipe, MarkdownModule, RouterModule, ButtonModule,MessageComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -20,9 +21,6 @@ export class ListComponent implements OnInit {
   conversationList: Conversation[] = [];
 
   ngOnInit(): void {
-    this.conversationService.getConversationList().subscribe((data) => {
-      console.log(data);
-    });
   }
 
   gotoQuestion(id: string): void {
