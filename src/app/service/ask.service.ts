@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AskService {
   private http = inject(HttpClient);
-  private url='https://think-therefore-be-api.azurewebsites.net/gemini';
-  // private url = 'http://localhost:3000/gemini';
+  private url=`${environment.apiUrl}/gemini`;
+
   constructor() {}
 
   // askGemini(prompt: string): Observable<string> {

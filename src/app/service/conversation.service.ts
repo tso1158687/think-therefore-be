@@ -2,14 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Conversation } from '../type/conversation.type';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConversationService {
   private http = inject(HttpClient);
-  private url='https://think-therefore-be-api.azurewebsites.net/conversations';
-  // private url = 'http://localhost:3000/conversations';
+  private url=`${environment.apiUrl}/conversations`;
 
   constructor() {}
 
