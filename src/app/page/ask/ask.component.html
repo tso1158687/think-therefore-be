@@ -21,10 +21,6 @@
     </div>
     }
   </div>
-  <div class="flex">
-    <app-question-input></app-question-input>
-
-  </div>
   <div class="card flex justify-content-center">
     <p-selectButton
       [options]="preconditionOptions"
@@ -32,5 +28,8 @@
       optionLabel="name"
       optionValue="value"
     />
+  </div>
+  <div class="w-full">
+    <app-question-input (askQuestionEvent)="askQuestion($event)"></app-question-input>
   </div>
 </div>

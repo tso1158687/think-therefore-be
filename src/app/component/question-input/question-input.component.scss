@@ -1,4 +1,23 @@
 :host{
-    width: 1000px;
+
     color: black;
+    background-color: var(--gray-800);
+    ::ng-deep{
+        .p-inputtext:enabled:focus{
+            box-shadow: 0;
+        }
+    }
+}
+textarea{
+    color: white;
+    resize: none;
+    &:focus{
+        color: white;
+        outline: none;
+    }
+
+}
+
+textarea:active{
+    outline: none !important;
 }

@@ -70,9 +70,9 @@ export class AskComponent implements OnInit {
     }
   }
 
-  askQuestion(): void {
+  askQuestion(question:string): void {
     this.isLoaded = true;
-    const { question, precondition } = this.askForm.value;
+    const { precondition } = this.askForm.value;
     this.askService
       .askGemini2(question as string, precondition as string)
       .pipe(finalize(() => (this.isLoaded = false)))
