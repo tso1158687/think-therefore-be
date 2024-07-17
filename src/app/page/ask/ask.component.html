@@ -22,22 +22,8 @@
     }
   </div>
   <div class="flex">
-    <p-inputGroup styleClass="align-items-end">
-      <textarea
-        rows="1"
-        pInputTextarea
-        [autoResize]="false"
-        formControlName="question"
-        [autoResize]="true"
-      ></textarea>
-      <button
-        type="button"
-        pButton
-        icon="pi pi-search"
-        class="p-button-warning"
-        (click)="askQuestion()"
-      ></button>
-    </p-inputGroup>
+    <app-question-input></app-question-input>
+
   </div>
   <div class="card flex justify-content-center">
     <p-selectButton
