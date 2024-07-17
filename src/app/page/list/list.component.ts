@@ -10,7 +10,14 @@ import { MessageComponent } from '../../component/message/message.component';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardModule, AsyncPipe, MarkdownModule, RouterModule, ButtonModule,MessageComponent],
+  imports: [
+    CardModule,
+    AsyncPipe,
+    MarkdownModule,
+    RouterModule,
+    ButtonModule,
+    MessageComponent,
+  ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -20,10 +27,9 @@ export class ListComponent implements OnInit {
   conversationList$ = this.conversationService.getConversationList();
   conversationList: Conversation[] = [];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   gotoQuestion(id: string): void {
-    this.router.navigate(['/think'], { queryParams: { c: id } });
+    this.router.navigate(['think', id]);
   }
 }

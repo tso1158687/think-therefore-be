@@ -34,13 +34,12 @@ import { QuestionInputComponent } from '../../component/question-input/question-
     InputGroupModule,
     RouterModule,
     CardModule,
-    QuestionInputComponent
+    QuestionInputComponent,
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
 export class AskComponent implements OnInit {
-
   private activatedRoute = inject(ActivatedRoute);
   private askService = inject(AskService);
   private conversationService = inject(ConversationService);
@@ -54,7 +53,7 @@ export class AskComponent implements OnInit {
     precondition: new FormControl('a', [Validators.required]),
   });
 
-  conversation!: Conversation ;
+  conversation!: Conversation;
 
   conversationList: any[] = [];
 
@@ -65,12 +64,14 @@ export class AskComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    if (this.activatedRoute.snapshot.queryParams['c']) {
-      this.getConversation(this.activatedRoute.snapshot.queryParams['c']);
-    }
+    this.activatedRoute.params.subscribe((params) => {
+      if(params['id']){
+        this.getConversation(params['id']);
+      }
+    });
   }
 
-  askQuestion(question:string): void {
+  askQuestion(question: string): void {
     this.isLoaded = true;
     const { precondition } = this.askForm.value;
     this.askService

@@ -13,6 +13,10 @@ export const routes: Routes = [
     component: AskComponent,
   },
   {
+    path: 'think/:id',
+    component: AskComponent,
+  },
+  {
     path: 'list',
     component:ListComponent
   }

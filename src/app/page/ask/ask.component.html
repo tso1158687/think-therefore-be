@@ -2,16 +2,23 @@
   class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50 w-full h-full"
   [formGroup]="askForm"
 >
-  <div class="text-5xl font-bold mt-8 mb-8 pl-4 pr-4">自己想過的事情是騙不了你的</div>
+  <div class="text-5xl font-bold mt-8 mb-8 pl-4 pr-4">
+    自己想過的事情是騙不了你的
+  </div>
   <div class="flex">
     @if(conversation){
 
-    <div class="card flex justify-content-center">
-      <p-card header="問題紀錄（希望可以連度對話）" styleClass="mt-4 max800">
-        @for (message of conversation.messages; track $index) {
+    <div class="card flex justify-content-center flex-column pl-4 pr-4">
+      @for (message of conversation.messages; track $index) { @if
+      (message.role==='model') {
+
+      <p-card styleClass="mt-4 bg-gray-900 text-white">
         <markdown [data]="message.parts[0].text"></markdown>
-        }
       </p-card>
+      }@else {
+      <markdown [data]="message.parts[0].text"></markdown>
+
+      } }
     </div>
     } @if (isLoaded) {
     <p-progressSpinner ariaLabel="loading" />
@@ -30,6 +37,8 @@
     />
   </div>
   <div class="w-full">
-    <app-question-input (askQuestionEvent)="askQuestion($event)"></app-question-input>
+    <app-question-input
+      (askQuestionEvent)="askQuestion($event)"
+    ></app-question-input>
   </div>
 </div>
