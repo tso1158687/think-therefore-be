@@ -52,20 +52,16 @@ export class AskComponent implements OnInit {
     ]),
     precondition: new FormControl('a', [Validators.required]),
   });
-
   conversation!: Conversation;
-
-  conversationList: any[] = [];
-
   preconditionOptions: any[] = [
     { name: '整理脈絡', value: 'a' },
     { name: '批判', value: 'b' },
-    { name: '綜合(不要點)', value: 'c' },
+    { name: '跟十歲小孩解釋', value: 'c' },
   ];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if(params['id']){
+      if (params['id']) {
         this.getConversation(params['id']);
       }
     });
@@ -74,22 +70,41 @@ export class AskComponent implements OnInit {
   askQuestion(question: string): void {
     this.isLoaded = true;
     const { precondition } = this.askForm.value;
-    this.askService
-      .askGemini2(question as string, precondition as string)
-      .pipe(finalize(() => (this.isLoaded = false)))
-      .subscribe((response) => {
-        console.log(response);
-        this.answer = response;
-      });
-  }
+    console.log(this.conversation);
+    if (this.conversation) {
+      console.log('has conversation');
+      console.log(this.conversation._id);
+      console.log(this.conversation.messages);
+      this.askService
+        .askGemini(
+          question,
+          precondition as string,
+          this.conversation._id,
+          this.conversation.messages
+        )
+        .pipe(finalize(() => (this.isLoaded = false)))
+        .subscribe((conversation) => {
+          this.conversation = conversation;
+          console.log(this.conversation);
 
-  getConversationList() {
-    this.conversationService
-      .getConversationList()
-      .subscribe((conversationList) => {
-        console.log(conversationList);
-        this.conversationList = conversationList as any[];
-      });
+        });
+    } else {
+      console.log('no conversation');
+      this.askService
+        .askGemini(question, precondition as string)
+        .pipe(finalize(() => (this.isLoaded = false)))
+        .subscribe((conversation) => {
+          this.conversation= conversation;
+          console.log(this.conversation);
+        });
+    }
+    // this.askService
+    //   .askGemini2(question as string, precondition as string)
+    //   .pipe(finalize(() => (this.isLoaded = false)))
+    //   .subscribe((response) => {
+    //     console.log(response);
+    //     this.answer = response;
+    //   });
   }
 
   getConversation(id: string) {
