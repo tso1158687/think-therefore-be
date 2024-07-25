@@ -24,5 +24,6 @@ export class QuestionInputComponent {
 
   askQuestion(): void {
     this.askQuestionEvent.emit(this.question);
+    this.question = '';
   }
 }
