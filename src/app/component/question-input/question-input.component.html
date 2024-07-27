@@ -1,7 +1,5 @@
 <div class="flex h-full flex-column focus-visible:outline-0 sss">
-  <div
-    class="w-full md:border-transparent"
-  >
+  <div class="w-full md:border-transparent">
     <div class="px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
       <div
         class="mx-auto flex flex-1 gap-3 text-base md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem]"
@@ -19,23 +17,21 @@
               >
                 <div class="flex align-items-end gap-1.5 md:gap-2">
                   <div class="flex min-w-0 flex-1 flex-column">
-
-
                     <textarea
                       rows="1"
-                      class="m-0 resize-none border-none bg-transparent px-0  max-h-[25dvh] max-h-52
-                      pl-2"
+                      class="m-0 resize-none border-none bg-transparent px-0 max-h-[25dvh] max-h-52 pl-2"
                       style="height: 400px"
                       pInputTextarea
                       [(ngModel)]="question"
-                      [ngModelOptions]="{standalone: true}"
+                      [ngModelOptions]="{ standalone: true }"
                     >
                     </textarea>
                   </div>
                   <button
                     pButton
                     pRipple
-                    label="送出"
+                    size="large"
+                    icon="pi pi-caret-right"
                     (click)="askQuestion()"
                     class="p-button-primary p-button-outlined p-button-rounded p-button-text"
                   ></button>
