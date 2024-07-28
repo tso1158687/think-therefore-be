@@ -20,10 +20,14 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 })
 export class QuestionInputComponent {
   @Output() askQuestionEvent = new EventEmitter<string>();
+  @Output() newQuestionEvent = new EventEmitter<void>();
   question = '';
 
   askQuestion(): void {
     this.askQuestionEvent.emit(this.question);
     this.question = '';
+  }
+  newQuestion(): void {
+    this.newQuestionEvent.emit();
   }
 }
