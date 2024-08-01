@@ -60,6 +60,7 @@ export class AskComponent implements OnInit {
     { name: '跟十歲小孩解釋', value: 'c' },
     { name: '第一性原理', value: 'd' },
     { name: '情感和心理層面', value: 'e' },
+    { name: '反思', value: 'f' },
   ];
 
   ngOnInit(): void {
