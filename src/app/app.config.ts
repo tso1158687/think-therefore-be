@@ -8,6 +8,7 @@ import { provideMarkdown } from 'ngx-markdown';
 import { provideLottieOptions } from 'ngx-lottie';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideAnimations } from '@angular/platform-browser/animations';
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
 }
@@ -29,5 +30,6 @@ export const appConfig: ApplicationConfig = {
     provideLottieOptions({
       player: () => import('lottie-web'),
     }),
+    provideAnimations()
   ],
 };

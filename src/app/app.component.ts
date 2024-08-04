@@ -7,7 +7,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, MarkdownModule, SidebarModule, TranslateModule],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    MarkdownModule,
+    SidebarModule,
+    TranslateModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -18,6 +24,8 @@ export class AppComponent {
     this.translateService.setDefaultLang('zh-tw');
 
     const browserLang = this.translateService.getBrowserLang();
-    this.translateService.use(browserLang?.match(/en|zh-tw/) ? browserLang : 'zh-tw');
+    this.translateService.use(
+      browserLang?.match(/en|zh-tw/) ? browserLang : 'zh-tw'
+    );
   }
 }
