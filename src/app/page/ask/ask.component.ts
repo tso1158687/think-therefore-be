@@ -16,7 +16,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ConversationService } from '../../service/conversation.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Conversation } from '../../type/conversation.type';
+import { Conversation, Message } from '../../type/conversation.type';
 import { CardModule } from 'primeng/card';
 import { QuestionInputComponent } from '../../component/question-input/question-input.component';
 
@@ -45,13 +45,16 @@ export class AskComponent implements OnInit {
   private conversationService = inject(ConversationService);
   private router = inject(Router);
   isLoading = false;
-  answer = '';
+
   askForm = new FormGroup({
     question: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
-    precondition: new FormControl('a', [Validators.required]),
+    precondition: new FormControl<string>('a', {
+      validators: Validators.required,
+      nonNullable: true,
+    }),
   });
   conversation: Conversation | null = null;
   preconditionOptions: any[] = [
@@ -73,30 +76,41 @@ export class AskComponent implements OnInit {
 
   askQuestion(question: string): void {
     this.isLoading = true;
-    const { precondition } = this.askForm.value;
-    console.log(this.conversation);
-    if (this.conversation) {
-      this.askService
-        .askGemini(
+    const { precondition } = this.askForm.getRawValue();
+
+    this.conversation
+      ? this.continousQuestion(
           question,
-          precondition as string,
+          precondition,
           this.conversation._id,
           this.conversation.messages
         )
-        .pipe(finalize(() => (this.isLoading = false)))
-        .subscribe((conversation) => {
-          this.conversation = conversation;
-          console.log(this.conversation);
-        });
-    } else {
-      this.askService
-        .askGemini(question, precondition as string)
-        .pipe(finalize(() => (this.isLoading = false)))
-        .subscribe((conversation) => {
-          this.conversation = conversation;
-          console.log(this.conversation);
-        });
-    }
+      : this.firstQuestion(question, precondition);
+  }
+
+  firstQuestion(question: string, precondition: string): void {
+    this.askService
+      .askGemini(question, precondition)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((conversation) => {
+        this.conversation = conversation;
+        console.log(this.conversation);
+      });
+  }
+
+  continousQuestion(
+    question: string,
+    precondition: string,
+    id: string,
+    messageList: Message[]
+  ): void {
+    this.askService
+      .askGemini(question, precondition as string, id, messageList)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((conversation) => {
+        this.conversation = conversation;
+        console.log(this.conversation);
+      });
   }
 
   newQuestion(): void {
