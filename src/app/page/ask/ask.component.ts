@@ -19,6 +19,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Conversation, Message } from '../../type/conversation.type';
 import { CardModule } from 'primeng/card';
 import { QuestionInputComponent } from '../../component/question-input/question-input.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ask',
@@ -35,6 +36,7 @@ import { QuestionInputComponent } from '../../component/question-input/question-
     RouterModule,
     CardModule,
     QuestionInputComponent,
+    TranslateModule
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
