@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AskService } from '../../service/ask.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { finalize } from 'rxjs';
+import { finalize, switchMap, tap } from 'rxjs';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { MarkdownModule } from 'ngx-markdown';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -91,7 +91,19 @@ export class AskComponent implements OnInit {
   firstQuestion(question: string, precondition: string): void {
     this.askService
       .askGemini(question, precondition)
-      .pipe(finalize(() => (this.isLoading = false)))
+      .pipe(
+        tap((conversation) => {
+          this.conversation = conversation;
+          this.isLoading = false;
+          console.log(this.conversation);
+        }),
+        switchMap((conversation) => {
+          return this.askService
+            .askGemini('', 'b', conversation._id, conversation.messages)
+            .pipe(finalize(() => (this.isLoading = false)));
+        }),
+        finalize(() => (this.isLoading = false))
+      )
       .subscribe((conversation) => {
         this.conversation = conversation;
         console.log(this.conversation);
@@ -118,7 +130,7 @@ export class AskComponent implements OnInit {
     this.router.navigate(['/think']);
   }
 
-  getConversation(id: string) {
+  getConversation(id: string): void {
     this.conversationService.getConversation(id).subscribe((conversation) => {
       this.conversation = conversation;
       console.log(conversation);

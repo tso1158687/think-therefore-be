@@ -8,16 +8,56 @@
   <div class="flex">
     @if (conversation) {
 
-    <div class="card flex justify-content-center flex-column pl-4 pr-4">
-      @for (message of conversation.messages; track $index) { @if
-      (message.role==='model') {
+    <div
+      class="card flex justify-content-center flex-column pl-4 pr-4 align-items-center"
+    >
+      @for (message of conversation.messages; track $index;let index = $index) {
+      @if (message.role==='model') { @if(index ===1 ||index===3){ @if
+      (index===1) {
 
       <p-card styleClass="mt-4 bg-gray-900 text-white">
+        <div class="grid">
+          <div class="col-12 lg:col-6 md:col-12 p-2">
+            <div class="">
+              <img
+                src="img/analysis3-pic.webp"
+                height="100px"
+                class="border-circle"
+              />
+            </div>
+            <markdown
+              [data]="conversation.messages[1].parts[0].text"
+            ></markdown>
+          </div>
+          <div class="col-12 lg:col-6 md:col-12 p-2">
+            <div class="">
+              <img
+                src="img/think-pic.webp"
+                height="100px"
+                class="border-circle"
+              />
+            </div>
+
+            <markdown
+              [data]="conversation.messages[3].parts[0].text"
+            ></markdown>
+          </div>
+        </div>
+      </p-card>
+
+      } }@else {
+      <p-card styleClass="mt-4 bg-gray-900 text-white  max-w-800">
         <markdown [data]="message.parts[0].text"></markdown>
       </p-card>
-      }@else {
-      <markdown [data]="message.parts[0].text"></markdown>
-
+      } }@else {
+        @if(index===0){
+          <img
+          src="img/question.webp"
+          height="100px"
+          class="border-circle"
+        />
+        }
+      <markdown [data]="message.parts[0].text" class="max-w-800"></markdown>
       } }
     </div>
     }

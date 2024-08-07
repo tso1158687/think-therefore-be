@@ -46,15 +46,4 @@ export class AskService {
 
     return this.http.post<Conversation>(this.url, body);
   }
-
-  askGemini2(question: string, precondition: string): Observable<string> {
-    const body = {
-      prompt: question,
-      precondition,
-    };
-    // console.log(body)
-    return this.http.post<string>(this.url, body, {
-      responseType: 'text' as any,
-    });
-  }
 }
