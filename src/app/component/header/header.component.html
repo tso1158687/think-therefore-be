@@ -16,12 +16,12 @@
     </div>
   </ng-template>
   <ng-template pTemplate="end">
-    <div class="flex flex-wrap align-items-center gap-3">
+    <div class="flex flex-wrap align-items-center gap-1">
       <button
         [routerLink]="['']"
         class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
       >
-        <i class="pi pi-lightbulb text-2xl"></i>
+        <i class="pi pi-sparkles text-2xl"></i>
       </button>
       <button
         [routerLink]="['think']"
@@ -33,7 +33,7 @@
         [routerLink]="['list']"
         class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
       >
-        <i class="pi pi-history text-2xl"></i>
+        <i class="pi pi-lightbulb text-2xl"></i>
       </button>
       <button
       (click)="menu.toggle($event)"
