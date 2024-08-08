@@ -2,9 +2,15 @@
   class="flex flex-column flex-wrap gap-3 align-items-center text-blue-50 w-full h-full"
   [formGroup]="askForm"
 >
-  <div class="text-5xl font-bold mt-8 mb-8 pl-4 pr-4">
-    {{'think_first'|translate}}
+  <div
+    class="flex text-5xl font-bold text-blue-50 relative mt-8 mb-8 pl-4 pr-4"
+  >
+    <div class="w-full absolute colorful-bg top-0 left-0 h-full"></div>
+    <span class="colorful-text">
+      {{ "think_first" | translate }}
+    </span>
   </div>
+
   <div class="flex">
     @if (conversation) {
 
@@ -49,14 +55,9 @@
       <p-card styleClass="mt-4 bg-gray-900 text-white  max-w-800">
         <markdown [data]="message.parts[0].text"></markdown>
       </p-card>
-      } }@else {
-        @if(index===0){
-          <img
-          src="img/question.webp"
-          height="100px"
-          class="border-circle"
-        />
-        }
+      } }@else { @if(index===0){
+      <img src="img/question.webp" height="100px" class="border-circle" />
+      }
       <markdown [data]="message.parts[0].text" class="max-w-800"></markdown>
       } }
     </div>

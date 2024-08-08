@@ -2,23 +2,52 @@
   <ng-lottie [options]="options" />
 </div>
 <div class="flex justify-content-center align-content-center mr-2 ml-2">
-  <div class="flex text-5xl font-bold text-blue-50">
-    {{'think_first'|translate}}
+  <div class="flex text-5xl font-bold text-blue-50 relative">
+    <div class="w-full absolute colorful-bg top-0 left-0 h-full"></div>
+    <span class="colorful-text">
+      {{ "think_first" | translate }}
+    </span>
   </div>
 </div>
 
-<p-card
-  header="為什麼你該自己想過"
-  styleClass="bg-gray-600 text-blue-50 text-center mt-4"
->
+<div class="grid flex justify-content-center mr-2 ml-2">
+  <div class="col-12 lg:col-3 md:col-9">
+    <p-card
+      subheader="盲信外界，失去自我"
+      styleClass="bg-gray-600 text-blue-50 text-center mt-4"
+    >
+      <ng-template pTemplate="header">
+        <div class="pt-4">
+          <i class="pi pi-hammer "style="font-size: 2.5rem"></i>
+        </div>
+      </ng-template>
+      <p>懶人包、權威</p>
+    </p-card>
 
-  <p class="m-0"></p>
-</p-card>
+  </div>
 
-<p-card
-  header="為什麼自己想過不會騙你"
-  styleClass="bg-gray-800 text-blue-50 text-center mt-4"
->
-  <p class="m-0">Lorem ipsum dolor sit amet...</p>
-</p-card>
+  <div class="col-12 lg:col-3 md:col-9">
+    <p-card
+      subheader="深思熟慮，成就真我"
+      styleClass="bg-gray-600 text-blue-50 text-center mt-4"
+    >
+      <ng-template pTemplate="header">
+        <div class="pt-4">
+          <i class="pi pi-graduation-cap "style="font-size: 2.5rem"></i>
+        </div>
+      </ng-template>
+      <p>巴拉巴拉巴拉</p>
+    </p-card>
+
+  </div>
+</div>
+
+<div class="flex justify-content-center mt-4">
+  <p-button
+    label="開始分析與思考"
+    [routerLink]="['think']"
+    [outlined]="true"
+    severity="secondary"
+  />
+</div>
 <!-- 思考很麻煩，你告訴我誰是壞人，我們一起打倒他 -->

@@ -15,6 +15,26 @@ body {
   background-color: var(--gray-800);
 }
 
+.colorful-text {
+  font-size: 4rem !important;
+  background: -webkit-linear-gradient(
+    0deg,
+    #ffa745 0%,
+    #fe869f 30%,
+    #ef7ac8 45%,
+    #a083ed 70%,
+    #43aeff 85%
+  );
+  // background: -webkit-linear-gradient(#1C7CE0, #150051);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.5em !important;
+}
+
+.colorful-bg{
+  background: -webkit-linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  filter: blur(72px);
+}
 
 .p-inputtext:enabled:focus {
   outline: 0 none;
@@ -65,14 +85,6 @@ body {
 .max-h-\[80vh\] {
   max-height: 80vh;
 }
-
-
-
-
-
-
-
-
 
 @media (min-width: 1280px) {
   .xl\:w-\[350px\] {

@@ -1,3 +1,28 @@
-.h-50{
-    height: 50vh;
+::ng-deep{
+    .p-card-subtitle{
+        font-size: 1.5rem;
+        color:aliceblue;
+    }
 }
+.h-50 {
+  height: 50vh;
+}
+
+// p {
+//   font-size: 4rem !important;
+//   background: -webkit-linear-gradient(
+//     0deg,
+//     #ffa745 0%,
+//     #fe869f 30%,
+//     #ef7ac8 45%,
+//     #a083ed 70%,
+//     #43aeff 85%
+//   );
+//   // background: -webkit-linear-gradient(#1C7CE0, #150051);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   line-height: 1.5em !important;
+// }
+
+
+// linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
