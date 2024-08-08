@@ -52,7 +52,8 @@
       </p-card>
 
       } }@else {
-      <p-card styleClass="mt-4 bg-gray-900 text-white  max-w-800">
+      <p-card styleClass="mt-4 bg-gray-900 text-white max-w-800">
+        <img src="img/answer.webp" height="100px" class="border-circle" />
         <markdown [data]="message.parts[0].text"></markdown>
       </p-card>
       } }@else { @if(index===0){
@@ -70,6 +71,8 @@
   <div class="card flex justify-content-center">
     <p-selectButton
       [options]="preconditionOptions"
+      optionDisabled="disabled"
+      [allowEmpty]="false"
       formControlName="precondition"
       optionLabel="name"
       optionValue="value"

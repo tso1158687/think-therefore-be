@@ -35,7 +35,9 @@ body {
   background: -webkit-linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
   filter: blur(72px);
 }
-
+.max-w-800{
+  max-width: 800px;
+}
 .p-inputtext:enabled:focus {
   outline: 0 none;
   outline-offset: 0;

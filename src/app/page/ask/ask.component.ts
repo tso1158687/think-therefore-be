@@ -36,7 +36,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     CardModule,
     QuestionInputComponent,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
@@ -60,12 +60,12 @@ export class AskComponent implements OnInit {
   });
   conversation: Conversation | null = null;
   preconditionOptions: any[] = [
-    { name: '整理脈絡', value: 'a' },
-    { name: '批判', value: 'b' },
-    { name: '跟十歲小孩解釋', value: 'c' },
-    { name: '第一性原理', value: 'd' },
-    { name: '情感和心理層面', value: 'e' },
-    { name: '反思', value: 'f' },
+    { name: '整理脈絡與批判', value: 'a' },
+    // { name: '批判', value: 'b' },
+    { name: '白話解釋', value: 'c', disabled: true },
+    { name: '第一性原理', value: 'd', disabled: true },
+    // { name: '情感和心理層面', value: 'e' },
+    { name: '反思', value: 'f', disabled: true },
   ];
 
   ngOnInit(): void {
@@ -108,6 +108,7 @@ export class AskComponent implements OnInit {
       )
       .subscribe((conversation) => {
         this.conversation = conversation;
+        this.resetPrecondition();
         console.log(this.conversation);
       });
   }
@@ -123,6 +124,7 @@ export class AskComponent implements OnInit {
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((conversation) => {
         this.conversation = conversation;
+        this.resetPrecondition();
         console.log(this.conversation);
       });
   }
@@ -135,7 +137,35 @@ export class AskComponent implements OnInit {
   getConversation(id: string): void {
     this.conversationService.getConversation(id).subscribe((conversation) => {
       this.conversation = conversation;
+      this.resetPrecondition();
       console.log(conversation);
     });
+  }
+
+  resetPrecondition(): void {
+    if (this.conversation) {
+      this.preconditionOptions.forEach((option, index) => {
+        if (index === 0) {
+          option.disabled = true;
+        } else {
+          option.disabled = false;
+        }
+      });
+      this.askForm.patchValue({
+        precondition: 'c',
+      });
+    } else {
+      this.preconditionOptions.forEach((option, index) => {
+        if (index === 0) {
+          option.disabled = false;
+        } else {
+          option.disabled = true;
+        }
+      });
+      this.askForm.patchValue({
+        precondition: 'a',
+      });
+    }
+    this.preconditionOptions = [...this.preconditionOptions];
   }
 }

@@ -32,4 +32,10 @@ export class ListComponent implements OnInit {
   gotoQuestion(id: string): void {
     this.router.navigate(['think', id]);
   }
+
+  getString(text:string): string {
+    // console.log(text);
+    // return `${text.substring(0, 50)}...`
+    return text;
+  }
 }
