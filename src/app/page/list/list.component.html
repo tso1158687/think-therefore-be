@@ -2,8 +2,8 @@
   @for (conversation of (conversationList$|async); track $index) {
   <div class="col-12 lg:col-12 md:col-12">
     <p-card
-      header="問題紀錄"
-      styleClass="mt-4  bg-gray-900 text-white max-w-800 m-auto"
+    header="思考紀錄"
+      styleClass="mt-2 bg-gray-900 text-white max-w-800 m-auto"
     >
       <markdown
         [data]="getString(conversation.messages[0].parts[0].text)"
