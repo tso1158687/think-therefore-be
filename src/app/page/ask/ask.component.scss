@@ -1,0 +1,7 @@
+::ng-deep {
+  .even {
+    & > div {
+      flex: 1;
+    }
+  }
+}

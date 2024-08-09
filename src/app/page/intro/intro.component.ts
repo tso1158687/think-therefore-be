@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { AnimationOptions, LottieComponent } from 'ngx-lottie';
+// import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-intro',
   standalone: true,
   imports: [
-    LottieComponent,
+    // LottieComponent,
     CardModule,
     TranslateModule,
     ButtonModule,
@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './intro.component.scss',
 })
 export class IntroComponent {
-  options: AnimationOptions = {
-    path: 'thinking.json',
-  };
+  // options: AnimationOptions = {
+  //   path: 'thinking.json',
+  // };
 }

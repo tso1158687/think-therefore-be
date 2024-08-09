@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideMarkdown } from 'ngx-markdown';
-import { provideLottieOptions } from 'ngx-lottie';
+// import { provideLottieOptions } from 'ngx-lottie';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -27,9 +27,9 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([TranslateModule.forRoot(provideTranslation())]),
     provideHttpClient(withFetch()),
     provideMarkdown(),
-    provideLottieOptions({
-      player: () => import('lottie-web'),
-    }),
+    // provideLottieOptions({
+    //   player: () => import('lottie-web'),
+    // }),
     provideAnimations()
   ],
 };
