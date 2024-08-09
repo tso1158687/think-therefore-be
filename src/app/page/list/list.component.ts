@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MessageComponent } from '../../component/message/message.component';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -18,6 +19,7 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
     ButtonModule,
     MessageComponent,
     PaginatorModule,
+    TranslateModule
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
@@ -32,9 +34,7 @@ export class ListComponent {
   }
 
   getString(text: string): string {
-    // console.log(text);
     return `${text.substring(0, 50)}...`
-    // return text;
   }
 
   first: number = 0;
@@ -42,8 +42,7 @@ export class ListComponent {
   rows: number = 10;
 
   onPageChange(event: PaginatorState) {
-    const { page, first, rows, pageCount } = event;
-    console.log(event);
+    const { page, rows } = event;
     this.first = event.first ?? 0;
     this.rows = event.rows ?? 10;
     console.log(this.first, this.rows);

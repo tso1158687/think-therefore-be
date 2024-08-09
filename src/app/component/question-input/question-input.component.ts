@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -14,6 +15,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputGroupAddonModule,
     InputGroupModule,
     FormsModule,
+    TranslateModule
   ],
   templateUrl: './question-input.component.html',
   styleUrl: './question-input.component.scss',

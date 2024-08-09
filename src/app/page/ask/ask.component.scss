@@ -2,6 +2,7 @@
   .even {
     & > div {
       flex: 1;
+      justify-content: center;
     }
   }
 }

@@ -5,7 +5,6 @@
   <div
     class="flex text-4xl font-bold text-blue-50 relative mt-4 mb-4 text-center"
   >
-
     <span class="colorful-text z-3">
       {{ "think_first" | translate }}
     </span>
@@ -74,10 +73,13 @@
       optionDisabled="disabled"
       [allowEmpty]="false"
       formControlName="precondition"
-      optionLabel="name"
       optionValue="value"
-      styleClass="flex even"
-    />
+      styleClass="flex even md:flex-column"
+    >
+      <ng-template let-item pTemplate>
+        {{ item.name | translate }}
+      </ng-template>
+    </p-selectButton>
   </div>
   <div class="w-full">
     <app-question-input

@@ -2,7 +2,7 @@
   @for (conversation of (conversationList$|async); track $index) {
   <div class="col-12 lg:col-12 md:col-12">
     <p-card
-    header="思考紀錄"
+      header="{{ 'think_history' | translate }}"
       styleClass="mt-2 bg-gray-900 text-white max-w-800 m-auto"
     >
       <markdown
@@ -10,12 +10,11 @@
       ></markdown>
 
       <p-button
-        label="前往問題"
+        label="{{ 'go_to_question' | translate }}"
         (click)="gotoQuestion(conversation._id)"
         [outlined]="true"
         severity="secondary"
-        ></p-button
-      >
+      ></p-button>
     </p-card>
   </div>
   }

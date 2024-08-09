@@ -60,12 +60,10 @@ export class AskComponent implements OnInit {
   });
   conversation: Conversation | null = null;
   preconditionOptions: any[] = [
-    { name: '整理脈絡與批判', value: 'a' },
-    // { name: '批判', value: 'b' },
-    { name: '白話解釋', value: 'c', disabled: true },
-    { name: '第一性原理', value: 'd', disabled: true },
-    // { name: '情感和心理層面', value: 'e' },
-    { name: '反思', value: 'f', disabled: true },
+    { name: 'analysis_and_critical_thinking', value: 'a' },
+    { name: 'explain_in_simple_terms', value: 'c', disabled: true },
+    { name: 'first_principle', value: 'd', disabled: true },
+    { name: 'reflection', value: 'f', disabled: true },
   ];
 
   ngOnInit(): void {

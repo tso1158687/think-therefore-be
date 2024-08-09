@@ -1,4 +1,12 @@
 {
-    "title":"Think Therefore Be",
-    "think_first":"You can't deceive yourself about what you've truly thought."
+  "title": "Think Therefore Be",
+  "think_first": "You can't deceive yourself about what you've truly thought.",
+  "think_history": "Thinking History",
+  "go_to_question": "Go to Question",
+  "first_principle": "First Principle",
+  "reflection": "Reflection",
+  "analysis_and_critical_thinking": "Analysis & Critical Thinking",
+  "explain_in_simple_terms": "Simple terms",
+  "question_hint": "Only what you've thought through yourself truly belongs to you. Any answer you receive, think it over again—does it make sense?",
+  "start_to_analysis_and_think": "Start to Analyze and Think"
 }

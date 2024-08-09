@@ -5,6 +5,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Lang } from '../../enum/lang.enum';
 
 @Component({
   selector: 'app-header',
@@ -24,11 +25,11 @@ export class HeaderComponent {
   items: MenuItem[] = [
     {
       label: 'English',
-      command: () => this.selectLanguage('en'),
+      command: () => this.selectLanguage(Lang.EN),
     },
     {
       label: '繁體中文',
-      command: () => this.selectLanguage('zh-tw'),
+      command: () => this.selectLanguage(Lang.ZH),
     },
   ];
 
