@@ -33,8 +33,8 @@ export class ListComponent {
 
   getString(text: string): string {
     // console.log(text);
-    // return `${text.substring(0, 50)}...`
-    return text;
+    return `${text.substring(0, 50)}...`
+    // return text;
   }
 
   first: number = 0;
