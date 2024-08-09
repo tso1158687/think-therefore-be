@@ -21,12 +21,10 @@ import { Lang } from './enum/lang.enum';
 export class AppComponent {
   constructor(private translateService: TranslateService) {
     this.translateService.setDefaultLang(Lang.EN);
-    this.translateService.addLangs([Lang.EN, Lang.ZH_TW]);
-
-    const browserLang = this.translateService.getBrowserLang()||Lang.EN;
+    this.translateService.addLangs([Lang.EN, Lang.ZH]);
+    const browserLang = this.translateService.getBrowserLang() || Lang.EN;
     this.translateService.use(
-      browserLang?.match(/en|zh-tw/) ? browserLang : Lang.EN
+      browserLang?.match(/en|zh/) ? browserLang : Lang.EN
     );
-    // window.localStorage.setItem('lang', browserLang);
   }
 }
