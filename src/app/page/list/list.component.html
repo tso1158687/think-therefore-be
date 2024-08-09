@@ -1,16 +1,23 @@
 <div class="grid flex justify-content-center">
-
   @for (conversation of (conversationList$|async); track $index) {
-    <div class="col-12 lg:col-12 md:col-12">
-
-
-  <p-card header="問題紀錄" styleClass="mt-4  bg-gray-900 text-white max-w-800">
-    <p-button (click)="gotoQuestion(conversation._id)">前往問題</p-button>
-    @for (message of conversation.messages; track $index) {
+  <div class="col-12 lg:col-12 md:col-12">
+    <p-card
+      header="問題紀錄"
+      styleClass="mt-4  bg-gray-900 text-white max-w-800"
+    >
+      <p-button (click)="gotoQuestion(conversation._id)">前往問題</p-button>
+      @for (message of conversation.messages; track $index) {
       <markdown [data]="getString(message.parts[0].text)"></markdown>
 
-    }
-  </p-card>
+      }
+    </p-card>
+  </div>
+  }
 </div>
-}
-</div>
+<p-paginator
+  (onPageChange)="onPageChange($event)"
+  [first]="first"
+  [rows]="rows"
+  [totalRecords]="120"
+  [rowsPerPageOptions]="[10, 20, 30]"
+/>

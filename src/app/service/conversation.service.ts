@@ -9,12 +9,12 @@ import { environment } from '../../environments/environment';
 })
 export class ConversationService {
   private http = inject(HttpClient);
-  private url=`${environment.apiUrl}/conversations`;
+  private url = `${environment.apiUrl}/conversations`;
 
-  constructor() {}
-
-  getConversationList(): Observable<Conversation[]> {
-    return this.http.get<Conversation[]>(this.url);
+  getConversationList(page = 1, limit = 10): Observable<Conversation[]> {
+    return this.http.get<Conversation[]>(
+      `${this.url}?page=${page}&limit=${limit}`
+    );
   }
 
   getConversation(id: string): Observable<Conversation> {
