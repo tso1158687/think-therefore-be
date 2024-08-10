@@ -5,13 +5,6 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 body {
-  //   margin: 0;
-  //   padding: 0;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 100vw;
-  //   height: 100vh;
   background-color: var(--gray-800);
 }
 
@@ -29,13 +22,15 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.5em !important;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.colorful-bg{
+.colorful-bg {
   background: -webkit-linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
   filter: blur(100px);
 }
-.max-w-800{
+.max-w-800 {
   max-width: 800px;
 }
 .p-inputtext:enabled:focus {

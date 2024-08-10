@@ -5,4 +5,14 @@
       justify-content: center;
     }
   }
+
+  .direction{
+    flex-direction: row;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .direction {
+        flex-direction: column;
+    }
+  }
 }

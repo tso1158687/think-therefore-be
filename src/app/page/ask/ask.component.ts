@@ -130,6 +130,7 @@ export class AskComponent implements OnInit {
   newQuestion(): void {
     this.conversation = null;
     this.router.navigate(['/think']);
+    this.resetPrecondition();
   }
 
   getConversation(id: string): void {
