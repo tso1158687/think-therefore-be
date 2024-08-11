@@ -11,5 +11,11 @@
   "question_hint": "Only what you've thought through yourself truly belongs to you. Any answer you receive, think it over again—does it make sense?",
   "start_to_analysis_and_think": "Start to Analyze and Think",
   "cogito_ergo_sum": "Cogito, ergo sum",
-  "i_think_therefore_i_am": "I think, therefore I am"
+  "i_think_therefore_i_am": "I think, therefore I am",
+  "can_doubt": "Is there anything that cannot be doubted?",
+  "can_trust": "Can news, authority, and summaries be trusted?",
+  "intro1": "Descartes, considered the father of modern philosophy, believed that the very act of doubting and thinking proves the certainty of one's existence, even if everything else can be doubted.",
+  "intro2": "What we once believed to be true in everyday knowledge has often been overturned, such as the belief that the Earth is flat or that all swans are white.",
+  "intro3": "News, authorities, and summaries filled with bias, misleading information, and lack of causal connections are everywhere. Yet, we often believe them without question, unaware of our own uncritical acceptance.",
+  "intro4": "Instead of blindly accepting others' viewpoints, it's better to think for yourself, develop your own understanding, and create your own perspective. It is through thinking that life gains meaning."
 }
